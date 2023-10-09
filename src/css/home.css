@@ -1,0 +1,62 @@
+.landing {
+    background-image: url("../data/images/background.png");
+    background-size: cover;
+    background-position: 0;
+    min-height: 90vh;
+    display: flex;
+}
+
+.landing h1,
+.landing--content h1 {
+    margin-top: 0;
+}
+
+.landing div {
+    padding: 0px 40px;
+}
+
+.landing div>* {
+    text-align: left;
+    max-width: 45%;
+    align-self: flex-start;
+}
+
+.landing span {
+    color: var(--blue);
+}
+
+.landing--content {
+    color: var(--white);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.landing--content p {
+    text-align: left;
+    max-width: 70%;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.landing--research {
+    background-image: url("../data/images/icub.jpeg");
+    background-size: cover;
+    background-position: 0;
+    box-shadow: inset 0 0 0 1000px rgba(12, 53, 70, 0.7);
+}
+
+.landing--people {
+    background-image: url("../data/images/people.jpg");
+    background-size: cover;
+    background-position: 0;
+    box-shadow: inset 0 0 0 1000px rgba(31, 125, 161, 0.7);
+}
+
+.landing--content__footer {
+    color: var(--lightblue);
+    background-color: var(--darkblue);
+}
+
+.landing--content__footer h3 {
+    margin-top: 0;
+}

@@ -1,0 +1,49 @@
+.two-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.five-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.two-flex {
+    flex: 0 0 calc(50% - 20px);
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.two-flex img {
+    height: 400px;
+}
+
+.three-flex {
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.three-flex img {
+    height: 300px;
+}
+
+.four-flex {
+    flex: 0 0 calc(25% - 20px);
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.four-flex img {
+    height: 225px;
+}
+
+.flex p {
+    margin: 0;
+}

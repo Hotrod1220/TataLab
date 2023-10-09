@@ -1,0 +1,26 @@
+footer {
+    background-color: var(--darkblue);
+}
+
+footer div {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer p:first-child {
+    color: var(--lightblue);
+}
+
+footer p {
+    color: var(--white);
+}
+
+footer a {
+    color: var(--lightblue);
+    text-decoration: none;
+    align-self: center;
+}
+
+footer a:hover {
+    color: var(--white);
+}

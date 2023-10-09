@@ -1,0 +1,65 @@
+.research {
+    background-color: var(--darkblue);
+    color: var(--white);
+}
+
+.research h1 {
+    margin-top: 0;
+}
+
+.research__content {
+    text-align: left;
+}
+
+.research__content div:first-child {
+    grid-column: span 2;   
+    padding-right: 10px;
+    align-self: center;
+}
+
+.research__content div:last-child {
+    grid-column: span 3;
+    padding-left: 10px;
+}
+
+.research__content iframe {
+    width: 100%;
+    height: 50vh;
+}
+
+.student_title {
+    display: inline-block;
+    margin-top: 0;
+    padding: 0px 10px;
+    border-left: 3px solid var(--blue);
+}
+
+.project {
+    text-align: left;
+    background-color: var(--darkblue);
+    border-radius: 22px;
+}
+
+.project img {
+    border-top-left-radius: 22px;    
+    border-top-right-radius: 22px;
+    height: auto;
+}
+
+.project__content {
+    padding: 15px;
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-bottom-left-radius: 22px;    
+    border-bottom-right-radius: 22px; 
+}
+
+.project__content h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--blue);
+}
+
+.project__content p {
+    padding-top: 10px;
+}
