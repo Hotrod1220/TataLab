@@ -32,7 +32,7 @@ function People() {
                     </p>
                     <p>
                         For more information on Dr. Matthew Tata:<br /><br />
-                        View Publications at <a href="https://www.researchgate.net/profile/Matthew-Tata/research">ResearchGate</a>
+                        View Publications at <a href="https://www.researchgate.net/profile/Matthew-Tata/research" target="_blank" rel="noreferrer">ResearchGate</a>
                     </p>
                     <button className="button--lightblue" onClick={cvClose}>
                         {text}

@@ -47,7 +47,7 @@ function Involved() {
                             like you to participate in our lab studies.
                         </p>
                         <p className="experiment__p">
-                            Visit our <a href='https://tatalab.ca/bookings/'>booking site</a> to see available experiments.
+                            Visit our <a href='https://tatalab.ca/bookings/' target="_blank" rel="noreferrer">booking site</a> to see available experiments.
                         </p>
                     </div>
                 </div>

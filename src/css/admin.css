@@ -1,0 +1,187 @@
+.add--button__content {
+    margin-bottom: 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.add--button__content h3 {
+    display: inline-block;
+    padding: 0px 10px;
+    color: var(--black);
+    margin: 0;
+}
+
+.add--button__content svg {
+    max-width: 40px;
+    vertical-align: bottom;
+}
+
+.add--button__content:hover h3 {
+    color: var(--blue);
+}
+
+.plus-back {
+    fill: var(--white);
+}
+
+.add--button__content:hover .plus-back {
+    fill: var(--lightblue);
+}
+
+.plus-circle {
+    fill: var(--black);
+}
+
+.add--button__content:hover .plus-circle {
+    fill: var(--white);
+}
+
+.sub--nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 20px;
+}
+
+.sub--nav a:first-child {
+    grid-column: 2;
+}
+
+.sub--nav a {
+    text-decoration: none;
+    color: var(--lightblue);
+}
+
+.sub--nav a div {
+    padding: 13px 20px;
+    box-shadow: inset 0 0 7px var(--lightblue);
+}
+
+.sub--nav a:first-child div {
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+}
+
+.sub--nav a:last-child div {
+    border-bottom-right-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.sub--nav__active {
+    background-color: var(--darkblue);
+}
+
+.project__content__admin {
+    padding: 15px;
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-bottom-left-radius: 22px;    
+    border-bottom-right-radius: 22px; 
+}
+
+.project__content__admin h3 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.project__content__admin p {
+    padding-bottom: 20px;
+}
+
+.buttons svg {
+    max-width: 25px;
+    margin-left: 8px;
+}
+
+.button--red {
+    color: rgb(213, 9, 9);
+    border: 2px solid rgb(213, 9, 9);
+}
+
+.button--red:hover {
+    background-color: rgb(213, 9, 9);
+    color: var(--black);
+}
+
+.button--green {
+    color: yellowgreen;
+    border: 2px solid yellowgreen;
+}
+
+.button--green:hover {
+    background-color: yellowgreen;
+    color: var(--black);
+}
+
+.button--green__important {
+    background-color: yellowgreen;
+    color: var(--black);
+    border: 2px solid yellowgreen;
+}
+
+.button--green__important:hover {
+    border: 2px solid black;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.button__small {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 20px;
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+.button__small > * {
+    vertical-align: top;
+}
+
+.button--red:hover svg path {
+    stroke: var(--black);
+}
+
+.button--green:hover svg path {
+    stroke: var(--black);
+}
+
+.people__admin {
+    margin-bottom: 60px;
+}
+
+.people__admin p {
+    padding: 10px 0px;
+}
+
+.popup {
+    width: 70%;
+    height: 100%;
+    background-color: var(--white);
+    border: 3px solid var(--blue);
+    border-radius: 22px;
+    padding: 30px;
+    margin: auto;
+}
+
+.popup svg {
+    max-width: 25px;
+    margin-left: 8px;
+}
+
+[role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+[data-popup='tooltip'].popup-overlay {
+    background: transparent;
+}

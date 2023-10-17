@@ -1,159 +1,71 @@
 {
-    "projects" : [
-        {
-            "title" : "Using a CNN with Acoustic Reverberation to Classify Room Size",
-            "photo" : "/images/temp.jpg",
-            "description" : "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
-            "id" : 1
-        },
-        {
-            "title" : "Room Size",
-            "photo" : "/images/temp.jpg",
-            "description" : "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
-            "id" : 2
-        },
-        {
-            "title" : "Using a CNN with Acoustic Reverberation to Classify Room Size",
-            "photo" : "/images/temp.jpg",
-            "description" : "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
-            "id" : 3
-        }
-    ],
-    "people" : {
-        "phd" : [
-            {
-                "name" : "Lukas Degrass",
-                "photo" : "/images/temp copy.jpg",
-                "major" : "Neuroscience",
-                "id" : 1
-            },
-            {
-                "name" : "Lukas Degrass",
-                "photo" : "/images/temp copy.jpg",
-                "major" : "Neuroscience",
-                "id" : 2
-            },
-            {
-                "name" : "Lukas Degrass",
-                "photo" : "/images/temp.jpg",
-                "major" : "Neuroscience",
-                "id" : 3
-            }
-        ],
-        "masters" : [
-            {
-                "name" : "Masters Student",
-                "photo" : "/images/temp.jpg",
-                "major" : "Geography",
-                "id" : 4
-            },
-            {
-                "name" : "Masters Student",
-                "photo" : "/images/temp.jpg",
-                "major" : "Geography",
-                "id" : 5
-            }
-        ],
-        "undergraduate" : [
-            {
-                "name" : "Tyrell Martens",
-                "photo" : "/images/temp.jpg",
-                "major" : "Computer Science",
-                "id" : 6
-            },
-            {
-                "name" : "Brayden Carlson",
-                "photo" : "/images/temp.jpg",
-                "major" : "Computer Science",
-                "id" : 7
-            },
-            {
-                "name" : "Tyrell Martens",
-                "photo" : "/images/temp.jpg",
-                "major" : "Computer Science",
-                "id" : 8
-            },
-            {
-                "name" : "Tyrell Martens",
-                "photo" : "/images/temp copy.jpg",
-                "major" : "Computer Science",
-                "id" : 9
-            },
-            {
-                "name" : "Tyrell Martens",
-                "photo" : "/images/temp.jpg",
-                "major" : "Computer Science",
-                "id" : 10
-            }
-        ],
-        "alumni" : [
-            {
-                "name" : "Alumni 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 11
-            },
-            {
-                "name" : "Alumni 2",
-                "photo" : "/images/temp.jpg",
-                "id" : 12
-            },
-            {
-                "name" : "Alumni 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 13
-            },
-            {
-                "name" : "Alumni 2",
-                "photo" : "/images/temp.jpg",
-                "id" : 14
-            },
-            {
-                "name" : "Alumni 2",
-                "photo" : "/images/temp.jpg",
-                "id" : 15
-            },
-            {
-                "name" : "Alumni 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 16
-            },
-            {
-                "name" : "Alumni 2",
-                "photo" : "/images/temp.jpg",
-                "id" : 17
-            }
-        ],
-        "collaborator" : [
-            {
-                "name" : "Collaborator 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 18
-            },
-            {
-                "name" : "Collaborator 2",
-                "photo" : "/images/temp copy.jpg",
-                "id" : 19
-            },
-            {
-                "name" : "Collaborator 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 20
-            },
-            {
-                "name" : "Collaborator 2",
-                "photo" : "/images/temp copy.jpg",
-                "id" : 21
-            },
-            {
-                "name" : "Collaborator 1",
-                "photo" : "/images/temp.jpg",
-                "id" : 22
-            },
-            {
-                "name" : "Collaborator 2",
-                "photo" : "/images/temp copy.jpg",
-                "id" : 23
-            }
-        ]
+  "projects": [
+    {
+      "title": "Using a CNN with Acoustic Reverberation to Classify Room Size",
+      "photo": "/images/temp.jpg",
+      "description": "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
+      "id": 1
+    },
+    {
+      "title": "Room Size",
+      "photo": "/images/temp.jpg",
+      "description": "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
+      "id": 2
+    },
+    {
+      "title": "Using a CNN with Acoustic Reverberation to Classify Room Size",
+      "photo": "/images/temp.jpg",
+      "description": "ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat",
+      "id": 3
     }
+  ],
+  "people": {
+    "phd": [
+      {
+        "name": "Lukas Degrass",
+        "photo": "/images/temp copy.jpg",
+        "major": "Neuroscience",
+        "id": 1
+      },
+      {
+        "name": "Angela",
+        "photo": "/images/temp.jpg",
+        "major": "Geography",
+        "id": 23
+      }
+    ],
+    "masters": [],
+    "undergraduate": [
+      {
+        "name": "Tyrell Martens",
+        "photo": "/images/temp.jpg",
+        "major": "Computer Science",
+        "id": 6
+      }
+    ],
+    "alumni": [
+      {
+        "name": "Alumni 1",
+        "photo": "/images/temp.jpg",
+        "id": 13
+      },
+      {
+        "name": "Alumni 1",
+        "photo": "/images/temp.jpg",
+        "id": 16
+      }
+    ],
+    "collaborator": [
+      {
+        "name": "Collaborator 1",
+        "photo": "/images/temp.jpg",
+        "id": 20
+      },
+      {
+        "name": "Collaborator 1",
+        "photo": "/images/temp.jpg",
+        "id": 22
+      }
+    ]
+  }
 }
