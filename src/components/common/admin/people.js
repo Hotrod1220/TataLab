@@ -28,11 +28,11 @@ function People() {
             <div>
                 {error && <h3>{error}</h3>}
                 {isPending && <h3>Loading...</h3>}
-                <div className="flex profile">
+                {data && <div className="flex profile">
                     {info && info.map((person) => (
                         <Person person={person} key={person.id}/>
                     ))}
-                </div>
+                </div>}
             </div>
         </div>
     )

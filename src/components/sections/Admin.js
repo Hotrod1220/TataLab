@@ -1,5 +1,4 @@
 import { NavLink, Outlet } from 'react-router-dom'
-import { ReactComponent as New } from '../../data/icons/plus.svg'
 
 function Admin() {
     return (

@@ -17,11 +17,11 @@ function Projects() {
             <div>
                 {error && <h3>{error}</h3>}
                 {isPending && <h3>Loading...</h3>}
-                <div className="flex">
+                {projects && <div className="flex">
                     {projects && projects.map((project) => (
                         <Project project={project} key={project.id}/>
                     ))}
-                </div>
+                </div>}
             </div>
         </div>
     )

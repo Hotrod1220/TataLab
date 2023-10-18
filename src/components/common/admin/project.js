@@ -35,7 +35,7 @@ function Project({ project }) {
             <div className="project__content__admin">
                 <p>{project.title}</p>
                 <div className='buttons'>
-                    <Link to="" className='button__small button--green'>
+                    <Link to={String(project.id)} className='button__small button--green'>
                         Edit
                         <Edit />
                     </Link>

@@ -49,6 +49,8 @@ function Person({ person }) {
                 .catch(e => {
                     setError(e.message)
                 })
+        } else {
+            setError("Error: Person was not found in database")
         }
     }
 
@@ -58,7 +60,7 @@ function Person({ person }) {
             <div>
                 <p>{person.name}</p>
                 <div className='buttons'>
-                    <Link to="" className='button__small button--green'>
+                    <Link to={String(person.id)} className='button__small button--green'>
                         Edit
                         <Edit />
                     </Link>

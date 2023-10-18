@@ -14,6 +14,8 @@ import PeopleAd from './components/common/admin/people'
 import AddProject from './components/common/admin/addProject'
 import AddPerson from './components/common/admin/addPerson'
 import Extra from './components/common/extra'
+import EditProject from './components/common/admin/editProject'
+import EditPerson from './components/common/admin/editPerson'
 
 function App() {
   return (
@@ -31,8 +33,10 @@ function App() {
               <Route index element={<Extra/>}/>
               <Route path="projects" element={<Projects/>}/>
                 <Route path="projects/add" element={<AddProject/>}/>
+                <Route path="projects/:id" element={<EditProject/>}/>
               <Route path="people" element={<PeopleAd/>}/>
                 <Route path="people/add" element={<AddPerson/>}/>
+                <Route path="people/:id" element={<EditPerson/>}/>
               <Route path="*" element={<NotFound/>}/>
             </Route>
             <Route path="*" element={<NotFound/>}/>

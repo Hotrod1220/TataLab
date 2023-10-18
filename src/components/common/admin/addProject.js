@@ -30,7 +30,7 @@ function AddProject() {
         <div>
             <h3>Add Project</h3>
             <div className='container'>
-                <form className='add-form' onSubmit={handleSubmit}>
+                <form className='add-project' onSubmit={handleSubmit}>
                     <div className="form__content">
                         <label>Title:</label>
                         <input
@@ -44,6 +44,7 @@ function AddProject() {
                         <textarea
                             required
                             value={description}
+                            placeholder="Write the Project Description"
                             onChange={(e) => setDesciption(e.target.value)}
                         >
                         </textarea>

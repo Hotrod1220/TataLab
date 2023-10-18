@@ -146,6 +146,14 @@
     .profile .four-flex img {
         height: 150px;
     }
+
+    .sub--nav {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .sub--nav a:first-child {
+        grid-column: 1;
+    }
 }
 
 @media screen and (max-width: 800px) {
