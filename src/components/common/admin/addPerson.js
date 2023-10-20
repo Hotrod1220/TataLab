@@ -1,56 +1,56 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { database, storage } from '../../../config/firebase'
+import { addDoc, collection } from 'firebase/firestore'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
 
 function AddPerson() {
     const [name, setName] = useState('')
     const [major, setMajor] = useState('')
-    const [level, setLevel] = useState('phd')
-    const [photo, setPhoto] = useState('/images/temp.jpg')
+    const [level, setLevel] = useState(0)
+    const [photo, setPhoto] = useState('')
+    const [url, setUrl] = useState('')
     const [isPending, setIsPending] = useState(false)
     const [complete, setComplete] = useState(false)
+    const [error, setError] = useState(false)
     const history = useNavigate()
+    const collectionRef = collection(database, "people")
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const person = { name, photo, major }
-        const url = 'http://localhost:8000/people'
-
-        setIsPending(true)
-
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                const updatedData = { ...data }
-                let maxId = 0
-                let info = []
-
-                if (updatedData[level]) {
-                    info = info.concat(
-                        data.phd,
-                        data.masters,
-                        data.undergraduate,
-                        data.alumni,
-                        data.collaborator
-                    )
-
-                    maxId = Math.max.apply(Math, info.map(
-                        person => person.id
-                    ))
-                    const newId = maxId + 1
-                    const newPerson = { ...person, id: newId }
-
-                    updatedData[level].push(newPerson)
-                }
-
-                fetch(url, {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(updatedData)
+    useEffect(() => {
+        const addData = async () => {
+            try {
+                await addDoc(collectionRef, {
+                    name: name,
+                    photo: url,
+                    major: major,
+                    education: parseInt(level)
                 })
-                    .then(() => {
-                        setIsPending(false)
-                        setComplete(true)
-                    })
+                setIsPending(false)
+                setComplete(true)
+            } catch(err) {
+                setError(err.message)
+            }
+        }
+        if (url) {
+            addData()
+        }
+    }, [url])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setIsPending(true)
+        const imageRef = ref(storage, `people/${photo.name + v4()}`)
+        
+        uploadBytes(imageRef, photo)
+            .then(snapshot => {
+                return getDownloadURL(snapshot.ref)
+            })
+            .then(u => {
+                setUrl(u)
+            })
+            .catch(err => {
+                setError(err.message)
             })
     }
 
@@ -81,20 +81,21 @@ function AddPerson() {
                             value={level}
                             onChange={(e) => setLevel(e.target.value)}
                         >
-                            <option value="phd">Doctorate</option>
-                            <option value="masters">Masters</option>
-                            <option value="undergraduate">Bachelor</option>
-                            <option value="alumni">Alumni</option>
-                            <option value="collaborator">Collaborator</option>
+                            <option value='0'>Doctorate</option>
+                            <option value='1'>Masters</option>
+                            <option value='2'>Bachelor</option>
+                            <option value='3'>Alumni</option>
+                            <option value='4'>Collaborator</option>
                         </select>
                         <label>
-                            Photo:
-                            Accepted file types: jpeg, png
+                            Photo:<br/>
+                            Accepted file types: jpeg/jpg, png<br/>
                         </label>
                         <input
+                            required
                             type='file'
                             accept='image/png, image/jpeg, image/jpg'
-                            required
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
                     {!isPending && !complete && <button className="button--blue">Add Person</button>}
@@ -102,6 +103,7 @@ function AddPerson() {
                 </form>
                 {complete && <button className="button--blue" onClick={() => history("/admin/people")}>Back to Admin</button>}
                 {complete && <h3>{name} has been added to the website.</h3>}
+                {error && <h3>{error}</h3>}
             </div>
         </div>
     )

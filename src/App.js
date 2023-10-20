@@ -16,6 +16,7 @@ import AddPerson from './components/common/admin/addPerson'
 import Extra from './components/common/extra'
 import EditProject from './components/common/admin/editProject'
 import EditPerson from './components/common/admin/editPerson'
+import Auth from './components/common/auth'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/people" element={<People/>}/>
             <Route path="/involved" element={<Involved/>}/>
             <Route path="/contact" element={<Contact/>}/>
+            <Route path="/auth" element={<Auth/>}/>
             <Route path="/admin" element={<Admin/>}>
               <Route index element={<Extra/>}/>
               <Route path="projects" element={<Projects/>}/>

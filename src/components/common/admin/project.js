@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactComponent as Delete } from '../../../data/icons/delete.svg'
 import { ReactComponent as Edit } from '../../../data/icons/edit.svg'
+import { deleteDoc, doc } from 'firebase/firestore';
 import Popup from 'reactjs-popup';
+import { database, storage } from '../../../config/firebase';
+import { ref, deleteObject } from "firebase/storage";
 
 function Project({ project }) {
     const [open, setOpen] = useState(false)
@@ -10,23 +13,22 @@ function Project({ project }) {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
-    const handleDelete = (id) => {
-        fetch(`http://localhost:8000/projects/${id}`, {
-            method: 'DELETE',
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    throw Error("Could not access the data at this time.")
-                }
-                setDeleted(true)
-                setTimeout(() => {
-                    setOpen(false)
-                    navigate("/admin")
-                }, 3000)
-            })
-            .catch(e => {
-                setError(e.message)
-            })
+    const handleDelete = async (id, photo) => {
+        const project = doc(database, "projects", id)
+        const desertRef = ref(storage, `${photo}`)
+        
+        try {
+            await deleteObject(desertRef)
+            await deleteDoc(project)
+
+            setDeleted(true)
+            setTimeout(() => {
+                setOpen(false)
+                navigate("/admin")
+            }, 3000)
+        } catch (err) {
+            setError(err.message)
+        }
     }
 
     return (
@@ -51,7 +53,7 @@ function Project({ project }) {
                         <div>
                             <h3>Are you sure you want to delete '{project.title}'?</h3>
                             <div className='buttons'>
-                                <button onClick={() => handleDelete(project.id)} className='button__small button--red'>
+                                <button onClick={() => handleDelete(project.id, project.photo)} className='button__small button--red'>
                                     Delete
                                     <Delete />
                                 </button>

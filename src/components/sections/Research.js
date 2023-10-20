@@ -2,7 +2,7 @@ import useFetch from "../common/fetch"
 import Project from "../common/project"
 
 function Research() {
-    const { data: projects, isPending, error } = useFetch("http://localhost:8000/projects")
+    const { data: projects, isPending, error } = useFetch("projects")
 
     return (
         <div className="border--top">
@@ -37,7 +37,7 @@ function Research() {
                 <h2 className="student_title">Student Research</h2>
                 <div>
                     {error && <h3>{error}</h3>}
-                    {isPending && <h3>Loading...</h3>}
+                    {isPending && <h1>Loading...</h1>}
                     <div className="flex">
                         {projects && projects.map((content) => (
                             <Project project={content} key={content.id} />
@@ -49,4 +49,4 @@ function Research() {
     )
 }
 
-export default Research
+export default Research;

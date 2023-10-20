@@ -222,6 +222,10 @@
     .experiment__p {
         margin-bottom: 0;
     }
+
+    .add-project {
+        width: 450px;
+    }
 }
 
 @media screen and (max-width: 650px) {
@@ -284,6 +288,19 @@
 
     .landing div>* {
         max-width: 80%;
+    }
+
+    .add-form {
+        width: 350px;
+    }
+
+    .add-project {
+        width: 350px;
+    }
+
+    .logout {
+        font-size: 16px;
+        padding: 0.25rem 0.5rem;
     }
 }
 

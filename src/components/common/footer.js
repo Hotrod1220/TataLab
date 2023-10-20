@@ -14,7 +14,7 @@ function Footer() {
                     &nbsp;<span> | </span>&nbsp;
                     <Link to="/contact">Contact</Link>
                 </p>
-                <Link to="/admin">Admin</Link>
+                <Link to="/auth">Admin</Link>
             </div>
         </footer>
     )

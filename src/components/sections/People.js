@@ -6,7 +6,7 @@ import matt from '../../data/images/matt.jpeg'
 import pdf from '../../data/resume/Matt_Resume.pdf'
 
 function People() {
-    const { data: people, isPending, error } = useFetch(" http://localhost:8000/people")
+    const { data: people, isPending, error } = useFetch("people")
     const [display, setDisplay] = useState("none")
     const [text, setText] = useState("View CV")
 
@@ -50,11 +50,11 @@ function People() {
             </div>
             <div className='people__content container'>
                 {error && <h2>{error}</h2>}
-                {isPending && <h3>Loading...</h3>}
-                {people && <PeopleSection people={people} title={"Graduate Students"}/>}
-                {people && <PeopleSection people={people.undergraduate} title={"Undergraduate Students"}/>}
-                {people && <PeopleSection people={people.alumni} title={"Alumni"}/>}
-                {people && <PeopleSection people={people.collaborator} title={"Collaborators"}/>}
+                {isPending && <h1>Loading...</h1>}
+                {people && <PeopleSection people={people.filter((person) => person.education === 0 || person.education === 1)} title={"Graduate Students"}/>}
+                {people && <PeopleSection people={people.filter((person) => person.education === 2)} title={"Undergraduate Students"}/>}
+                {people && <PeopleSection people={people.filter((person) => person.education === 3)} title={"Alumni"}/>}
+                {people && <PeopleSection people={people.filter((person) => person.education === 4)} title={"Collaborators"}/>}
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import useFetch from '../fetch';
 import Project from './project';
 
 function Projects() {
-    const { data: projects, isPending, error } = useFetch('http://localhost:8000/projects')
+    const { data: projects, isPending, error } = useFetch('projects')
 
     return (
         <div className="container">

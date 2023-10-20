@@ -92,54 +92,10 @@
     margin-left: 8px;
 }
 
-.button--red {
-    color: rgb(213, 9, 9);
-    border: 2px solid rgb(213, 9, 9);
-}
-
-.button--red:hover {
-    background-color: rgb(213, 9, 9);
-    color: var(--black);
-}
-
-.button--green {
-    color: yellowgreen;
-    border: 2px solid yellowgreen;
-}
-
-.button--green:hover {
-    background-color: yellowgreen;
-    color: var(--black);
-}
-
-.button--green__important {
-    background-color: yellowgreen;
-    color: var(--black);
-    border: 2px solid yellowgreen;
-}
-
-.button--green__important:hover {
-    border: 2px solid black;
-}
-
 .buttons {
     display: flex;
     justify-content: center;
     gap: 30px;
-}
-
-.button__small {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 16px;
-    font-size: 20px;
-    font-family: 'Kumbh Sans', sans-serif;
-}
-
-.button__small > * {
-    vertical-align: top;
 }
 
 .button--red:hover svg path {
@@ -184,4 +140,15 @@
 
 [data-popup='tooltip'].popup-overlay {
     background: transparent;
+}
+
+.logout--container {
+    position: relative;
+    margin: 0px 40px;
+}
+
+.logout--container button {
+    position: absolute;
+    right: 0;
+    top: 0;
 }

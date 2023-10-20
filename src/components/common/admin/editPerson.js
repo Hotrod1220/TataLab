@@ -1,84 +1,74 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
-import useFetch from '../fetch'
+import useFetch from '../fetch';
+import { database, storage } from '../../../config/firebase'
+import { doc, updateDoc } from 'firebase/firestore'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
 
 function EditPerson() {
     const { id } = useParams()
-    const { data, pending, fetchError } = useFetch('http://localhost:8000/people')
+    const { data, pending, fetchError } = useFetch('people')
     const [name, setName] = useState('')
     const [major, setMajor] = useState('')
-    const [photo, setPhoto] = useState('/images/temp.jpg')
+    const [photo, setPhoto] = useState('')
     const [level, setLevel] = useState('')
-    const [oldLevel, setOldLevel] = useState('')
-    const [person, setPerson] = useState('')
-    const [error, setError] = useState('')
+    const [url, setUrl] = useState('')
     const [complete, setComplete] = useState(false)
+    const [error, setError] = useState('')
     const [isPending, setIsPending] = useState(false)
     const history = useNavigate()
-    
+    const projectDoc = doc(database, "people", id)
+
     useEffect(() => {
         if (data) {
-            determineLevel(id)
-            setName(person.name)
-            setMajor(person.major)
-            setPhoto(person.photo)
-            setLevel(oldLevel)
+            const per = data.filter((per) => per.id === id)
+            setName(per[0].name)
+            setMajor(per[0].major)
+            setLevel(per[0].education)
         }
-    }, [data, id, oldLevel, person])
-    
-    const determineLevel = (id) => {
-        for (const lev of Object.keys(data)) {
-            let per = data[lev].find(person => person.id === parseInt(id))
-
-            if (per) {
-                setOldLevel(lev)
-                setPerson(per)
+    }, [data])
+       
+    useEffect(() => {
+        const addData = async () => {
+            try {
+                await updateDoc(projectDoc, {
+                    name: name,
+                    photo: url,
+                    major: major,
+                    education: parseInt(level)
+                })
+                setIsPending(false)
+                setComplete(true)
+            } catch(err) {
+                setError(err.message)
             }
         }
-    }
+        if (url) {
+            addData()
+        }
+    }, [url])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         setIsPending(true)
-        const updatedData = { ...data }
-        const person = { name, photo, major }
-        let maxId = 0
-        let info = []
-
-        const index = data[oldLevel].findIndex(person => person.id === parseInt(id))
-
-        if (index !== -1) {
-            updatedData[oldLevel].splice(index, 1)
+        
+        if (photo) {
+            const imageRef = ref(storage, `people/${photo.name + v4()}`)
             
-            if (updatedData[level]) {
-                info = info.concat(
-                    data.phd,
-                    data.masters,
-                    data.undergraduate,
-                    data.alumni,
-                    data.collaborator
-                )
-    
-                maxId = Math.max.apply(Math, info.map(
-                    person => person.id
-                ))
-                const newId = maxId + 1
-                const newPerson = { ...person, id: newId }
-    
-                updatedData[level].push(newPerson)
-            }
-
-            fetch('http://localhost:8000/people', {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(updatedData)
-            })
-                .then(() => {
-                    setIsPending(false)
-                    setComplete(true)
+            uploadBytes(imageRef, photo)
+                .then(snapshot => {
+                    return getDownloadURL(snapshot.ref)
+                })
+                .then(u => {
+                    setUrl(u)
+                })
+                .catch(err => {
+                    setError(err.message)
                 })
         } else {
-            setError("Error: Person was not found in database")
+            const per = data.filter((per) => per.id === id)
+            setUrl(per[0].photo)
         }
     }
 
@@ -112,19 +102,20 @@ function EditPerson() {
                             value={level}
                             onChange={(e) => setLevel(e.target.value)}
                         >
-                            <option value="phd">Doctorate</option>
-                            <option value="masters">Masters</option>
-                            <option value="undergraduate">Bachelor</option>
-                            <option value="alumni">Alumni</option>
-                            <option value="collaborator">Collaborator</option>
+                            <option value='0'>Doctorate</option>
+                            <option value='1'>Masters</option>
+                            <option value='2'>Bachelor</option>
+                            <option value='3'>Alumni</option>
+                            <option value='4'>Collaborator</option>
                         </select>
                         <label>
-                            Photo:
-                            Accepted file types: jpeg, png
+                            Photo:<br/>
+                            Accepted file types: jpeg/jpg, png<br/>
                         </label>
                         <input
                             type='file'
                             accept='image/png, image/jpeg, image/jpg'
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
                     {!isPending && !complete && <button className="button--blue">Edit Person</button>}
@@ -138,85 +129,5 @@ function EditPerson() {
         </div>
     )
 }
-
-/* function EditProject() {
-    const { id } = useParams()
-    const { data, pending, fetchError } = useFetch('http://localhost:8000/projects/' + id)
-    const [title, setTitle] = useState('')
-    const [description, setDesciption] = useState('')
-    const [photo, setPhoto] = useState('/images/temp.jpg')
-    const [complete, setComplete] = useState(false)
-    const [error, setError] = useState('')
-    const [isPending, setIsPending] = useState(false)
-    const history = useNavigate()
-
-    useEffect(() => {
-        if (data) {
-            setTitle(data.title)
-            setDesciption(data.description)
-            setPhoto(data.photo)
-        }
-    }, [data])
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const project = {title, photo, description}
-        setIsPending(true)
-
-        fetch('http://localhost:8000/projects/' + id, {
-                method: 'PUT',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(project)
-            })
-            .then(() => {
-                setComplete(true)
-            })
-            .catch(() => {
-                setError(error.message)
-                setIsPending(false)
-            })
-    }
-
-    return (
-        <div>
-            {fetchError && <h3>{error}</h3>}
-            {pending && <h3>Loading...</h3>}
-            {data && 
-                <div>
-                    <h3>Edit Project</h3>
-                    <form className='add-project' onSubmit={handleSubmit}>
-                    <div className="form__content">
-                        <label>Title:</label>
-                        <input
-                            type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <label>Project Description:</label>
-                        <textarea
-                            value={description}
-                            onChange={(e) => setDesciption(e.target.value)}
-                        >
-                        </textarea>
-                        <label>
-                            Photo:
-                            Accepted file types: jpeg, png
-                        </label>
-                        <input
-                            type='file'
-                            accept='image/png, image/jpeg, image/jpg'
-                        />
-                    </div>
-                    {!isPending && !complete && <button className="button--blue">Edit Project</button>}
-                    {isPending && !complete && <button disabled className="button--blue">Editing Project...</button>}
-                </form>
-                {complete && <button className="button--blue" onClick={() => history("/admin/projects")}>Back to Admin</button>}
-                {complete && <h3>Project has been edited.</h3>}
-                {error && <h3>Error: Could not edit this project.</h3>}
-                </div>
-            }
-        </div>
-    )
-}*/
 
 export default EditPerson;

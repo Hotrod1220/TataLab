@@ -1,43 +1,72 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import useFetch from '../fetch';
+import { database, storage } from '../../../config/firebase'
+import { doc, updateDoc } from 'firebase/firestore'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
 
 function EditProject() {
     const { id } = useParams()
-    const { data, pending, fetchError } = useFetch(`http://localhost:8000/projects/${id}`)
+    const { data, pending, fetchError } = useFetch('projects')
     const [title, setTitle] = useState('')
     const [description, setDesciption] = useState('')
-    const [photo, setPhoto] = useState('/images/temp.jpg')
+    const [photo, setPhoto] = useState('')
+    const [url, setUrl] = useState('')
     const [complete, setComplete] = useState(false)
     const [error, setError] = useState('')
     const [isPending, setIsPending] = useState(false)
     const history = useNavigate()
+    const projectDoc = doc(database, "projects", id)
 
     useEffect(() => {
         if (data) {
-            setTitle(data.title)
-            setDesciption(data.description)
-            setPhoto(data.photo)
+            const proj = data.filter((proj) => proj.id === id)
+            setTitle(proj[0].title)
+            setDesciption(proj[0].description)
         }
     }, [data])
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        const addData = async () => {
+            try {
+                await updateDoc(projectDoc, {
+                    title: title,
+                    photo: url,
+                    description: description
+                })
+                setIsPending(false)
+                setComplete(true)
+            } catch(err) {
+                setError(err.message)
+            }
+        }
+        if (url) {
+            addData()
+        }
+    }, [url])
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        const project = {title, photo, description}
         setIsPending(true)
 
-        fetch(`http://localhost:8000/projects/${id}`, {
-                method: 'PUT',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(project)
-            })
-            .then(() => {
-                setComplete(true)
-            })
-            .catch(() => {
-                setError(error.message)
-                setIsPending(false)
-            })
+        if (photo) {
+            const imageRef = ref(storage, `projects/${photo.name + v4()}`)
+            
+            uploadBytes(imageRef, photo)
+                .then(snapshot => {
+                    return getDownloadURL(snapshot.ref)
+                })
+                .then(u => {
+                    setUrl(u)
+                })
+                .catch(err => {
+                    setError(err.message)
+                })
+        } else {
+            const proj = data.filter((proj) => proj.id === id)
+            setUrl(proj[0].photo)
+        }
     }
 
     return (
@@ -62,12 +91,14 @@ function EditProject() {
                         >
                         </textarea>
                         <label>
-                            Photo:
-                            Accepted file types: jpeg, png
+                            Photo:<br/>
+                            Please make photo width equal or greater than photo height.<br/><br/>
+                            Accepted file types: jpeg/jpg, png
                         </label>
                         <input
                             type='file'
                             accept='image/png, image/jpeg, image/jpg'
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
                     {!isPending && !complete && <button className="button--blue">Edit Project</button>}
@@ -75,7 +106,7 @@ function EditProject() {
                 </form>
                 {complete && <button className="button--blue" onClick={() => history("/admin/projects")}>Back to Admin</button>}
                 {complete && <h3>Project has been edited.</h3>}
-                {error && <h3>Error: Could not edit this project.</h3>}
+                {error && <h3>{error}</h3>}
                 </div>
             }
         </div>

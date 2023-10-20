@@ -1,28 +1,54 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { database, storage } from '../../../config/firebase'
+import { addDoc, collection } from 'firebase/firestore'
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { v4 } from 'uuid'
 
 function AddProject() {
     const [title, setTitle] = useState('')
     const [description, setDesciption] = useState('')
-    const [photo, setPhoto] = useState('/images/temp.jpg')
+    const [photo, setPhoto] = useState('')
+    const [url, setUrl] = useState('')
     const [isPending, setIsPending] = useState(false)
     const [complete, setComplete] = useState(false)
+    const [error, setError] = useState(false)
     const history = useNavigate()
+    const collectionRef = collection(database, "projects")
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const project = { title, photo, description }
-
-        setIsPending(true)
-
-        fetch('http://localhost:8000/projects', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(project)
-        })
-            .then(() => {
+    useEffect(() => {
+        const addData = async () => {
+            try {
+                await addDoc(collectionRef, {
+                    title: title,
+                    photo: url,
+                    description: description
+                })
                 setIsPending(false)
                 setComplete(true)
+            } catch(err) {
+                setError(err.message)
+            }
+        }
+        if (url) {
+            addData()
+        }
+    }, [url])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setIsPending(true)
+        const imageRef = ref(storage, `projects/${photo.name + v4()}`)
+        
+        uploadBytes(imageRef, photo)
+            .then(snapshot => {
+                return getDownloadURL(snapshot.ref)
+            })
+            .then(u => {
+                setUrl(u)
+            })
+            .catch(err => {
+                setError(err.message)
             })
     }
 
@@ -49,13 +75,15 @@ function AddProject() {
                         >
                         </textarea>
                         <label>
-                            Photo:
-                            Accepted file types: jpeg, png
+                            Photo:<br/>
+                            Please make photo width equal or greater than photo height.<br/><br/>
+                            Accepted file types: jpeg/jpg, png
                         </label>
                         <input
+                            required
                             type='file'
                             accept='image/png, image/jpeg, image/jpg'
-                            required
+                            onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
                     {!isPending && !complete && <button className="button--blue">Add Project</button>}
@@ -63,6 +91,7 @@ function AddProject() {
                 </form>
                 {complete && <button className="button--blue" onClick={() => history("/admin/projects")}>Back to Admin</button>}
                 {complete && <h3>Project has been added to the website.</h3>}
+                {error && <h3>{error}</h3>}
             </div>
         </div>
     )
