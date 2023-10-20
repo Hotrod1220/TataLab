@@ -29,3 +29,12 @@ textarea {
 .form__content {
     text-align: left;
 }
+
+.form__center {
+    width: 300px;
+    margin: auto;
+}
+
+.form__header {
+    margin-top: 0;
+}

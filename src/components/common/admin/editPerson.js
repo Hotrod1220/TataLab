@@ -78,7 +78,7 @@ function EditPerson() {
             {pending && <h3>Loading...</h3>}
             {data && 
                 <div>
-                    <h3>Edit Person</h3>
+                    <h3 className='form__header'>Edit Person</h3>
                     <form className='add-form' onSubmit={handleSubmit}>
                     <div className="form__content">
                         <label>Name:</label>

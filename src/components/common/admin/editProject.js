@@ -75,7 +75,7 @@ function EditProject() {
             {pending && <h3>Loading...</h3>}
             {data && 
                 <div>
-                    <h3>Edit Project</h3>
+                    <h3 className='form__header'>Edit Project</h3>
                     <form className='add-project' onSubmit={handleSubmit}>
                     <div className="form__content">
                         <label>Title:</label>

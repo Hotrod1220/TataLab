@@ -32,6 +32,7 @@ function Admin() {
         <div>
             {user && <div className="container">
                 <div className="logout--container">
+                    <NavLink to="resume" className="resume__button button__small button--blue">Matt's Resume</NavLink>
                     <h1>Admin</h1>
                     <button className="logout button__small button--blue" onClick={logout}>Logout</button>
                 </div>
@@ -47,10 +48,10 @@ function Admin() {
                         )}
                     </NavLink>
                 </nav>
+                {error && <p>Log out unsuccessful. {error}</p>}
                 <div className='wrapper'>
                     <Outlet />
                 </div>
-                {error && <p>Log out unsuccessful.</p>}
             </div>}
         </div>
     )

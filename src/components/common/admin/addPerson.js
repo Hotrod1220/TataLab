@@ -56,7 +56,7 @@ function AddPerson() {
 
     return (
         <div>
-            <h3>Add Person</h3>
+            <h3 className='form__header'>Add Person</h3>
             <div className='container'>
                 <form onSubmit={handleSubmit} className='add-form'>
                     <div className="form__content">

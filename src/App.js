@@ -17,6 +17,7 @@ import Extra from './components/common/extra'
 import EditProject from './components/common/admin/editProject'
 import EditPerson from './components/common/admin/editPerson'
 import Auth from './components/common/auth'
+import Resume from './components/common/admin/resume'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               <Route path="people" element={<PeopleAd/>}/>
                 <Route path="people/add" element={<AddPerson/>}/>
                 <Route path="people/:id" element={<EditPerson/>}/>
+              <Route path="resume" element={<Resume/>}/>
               <Route path="*" element={<NotFound/>}/>
             </Route>
             <Route path="*" element={<NotFound/>}/>
