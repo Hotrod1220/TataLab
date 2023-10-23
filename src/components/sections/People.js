@@ -12,7 +12,9 @@ function People() {
     const myRef = useRef();
 
     function cvClose() {
-        myRef.current.scrollIntoView()
+        if (display === "none") {
+            myRef.current.scrollIntoView()
+        }
         setDisplay(display === "none" ? "block" : "none")
         setText(text === "View CV" ? "Close CV" : "View CV")
     }
