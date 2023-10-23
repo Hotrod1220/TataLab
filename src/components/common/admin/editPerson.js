@@ -118,8 +118,8 @@ function EditPerson() {
                             onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
-                    {!isPending && !complete && <button className="button--blue">Edit Person</button>}
-                    {isPending && !complete && <button disabled className="button--blue">Editing Person...</button>}
+                    {!isPending && !complete && <button className="button--blue">Submit Changes</button>}
+                    {isPending && !complete && <button disabled className="button--blue">Submitting Changes...</button>}
                 </form>
                 {complete && <button className="button--blue" onClick={() => history("/admin/people")}>Back to Admin</button>}
                 {complete && <h3>Person has been edited.</h3>}

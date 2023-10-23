@@ -61,7 +61,9 @@ function Involved() {
                             graduate student ready to make your mark, we offer a range
                             of research projects and mentorship opportunities. Find out
                             how you can take your academic journey to the next level and
-                            contribute to groundbreaking discoveries.
+                            contribute to groundbreaking discoveries.<br/><br/>
+
+                            View our FAQ below for more information.
                         </p>
                         <button className="button--blue" onClick={() => window.location.href = 'mailto:matthew.tata@uleth.ca'}>
                             Send an Email

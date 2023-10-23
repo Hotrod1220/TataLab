@@ -101,8 +101,8 @@ function EditProject() {
                             onChange={(e) => setPhoto(e.target.files[0])}
                         />
                     </div>
-                    {!isPending && !complete && <button className="button--blue">Edit Project</button>}
-                    {isPending && !complete && <button disabled className="button--blue">Editing Project...</button>}
+                    {!isPending && !complete && <button className="button--blue">Submit Changes</button>}
+                    {isPending && !complete && <button disabled className="button--blue">Submitting Changes...</button>}
                 </form>
                 {complete && <button className="button--blue" onClick={() => history("/admin/projects")}>Back to Admin</button>}
                 {complete && <h3>Project has been edited.</h3>}

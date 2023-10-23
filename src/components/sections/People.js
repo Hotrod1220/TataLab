@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import useFetch from '../common/fetch'
 import PeopleSection from '../common/people'
 import { ReactComponent as Cross } from '../../data/icons/x.svg'
@@ -9,8 +9,10 @@ function People() {
     const [display, setDisplay] = useState("none")
     const [text, setText] = useState("View CV")
     const pdf = 'https://firebasestorage.googleapis.com/v0/b/tatalab-17241.appspot.com/o/Resume%2FMatt_Resume.pdf?alt=media&token=ec77da49-bc6d-43d7-9ddb-5c2125542362&_gl=1*q20xt6*_ga*MTYwMzQ5MTgxMC4xNjk3NTExNjg3*_ga_CW55HF8NVT*MTY5NzgxNjUyMy43LjEuMTY5NzgxNzgyOS41Ny4wLjA.'
+    const myRef = useRef();
 
     function cvClose() {
+        myRef.current.scrollIntoView()
         setDisplay(display === "none" ? "block" : "none")
         setText(text === "View CV" ? "Close CV" : "View CV")
     }
@@ -48,7 +50,7 @@ function People() {
                 </div>
                 <embed src={pdf} className="resume__content" />
             </div>
-            <div className='people__content container'>
+            <div className='people__content container' ref={myRef}>
                 {error && <h2>{error}</h2>}
                 {isPending && <h1>Loading...</h1>}
                 {people && <PeopleSection people={people.filter((person) => person.education === 0 || person.education === 1)} title={"Graduate Students"}/>}

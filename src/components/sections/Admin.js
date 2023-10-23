@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { signOut } from "firebase/auth";
-import { auth } from '../../config/firebase' 
+import { auth } from '../../config/firebase'
 
 function Admin() {
     const navigate = useNavigate()
@@ -32,7 +32,7 @@ function Admin() {
         <div>
             {user && <div className="container">
                 <div className="logout--container">
-                    <NavLink to="resume" className="resume__button button__small button--blue">Matt's Resume</NavLink>
+                    <NavLink to="resume" className="resume__button button__small button--blue">Matt's CV</NavLink>
                     <h1>Admin</h1>
                     <button className="logout button__small button--blue" onClick={logout}>Logout</button>
                 </div>
