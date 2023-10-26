@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import useFetch from '../common/fetch'
 import PeopleSection from '../common/people'
 import { ReactComponent as Cross } from '../../data/icons/x.svg'
-import matt from '../../data/images/matt.jpeg'
+import matt from '../../data/images/matt.png'
 
 function People() {
     const { data: people, isPending, error } = useFetch("people")
