@@ -39,14 +39,14 @@
 }
 
 .landing--research {
-    background-image: url("../data/images/icub.jpeg");
+    background-image: url("../data/images/icub.png");
     background-size: cover;
     background-position: 0;
     box-shadow: inset 0 0 0 1000px rgba(12, 53, 70, 0.7);
 }
 
 .landing--people {
-    background-image: url("../data/images/people.jpg");
+    background-image: url("../data/images/people.png");
     background-size: cover;
     background-position: 0;
     box-shadow: inset 0 0 0 1000px rgba(31, 125, 161, 0.7);
