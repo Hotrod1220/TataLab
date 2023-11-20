@@ -2,7 +2,7 @@
     background-color: var(--white);
 }
 
-.primary-nav div {
+.primary-nav__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,4 +34,8 @@
     top: 0;
     position: sticky;
     z-index: 3;
+}
+
+.nav__active {
+    color: var(--blue);
 }

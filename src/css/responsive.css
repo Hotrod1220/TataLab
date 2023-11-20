@@ -79,7 +79,7 @@
         padding: 0px 20px;
     }
 
-    .primary-nav div {
+    .primary-nav__content {
         padding: 20px;
     }
 
@@ -154,10 +154,14 @@
     .sub--nav a:first-child {
         grid-column: 1;
     }
+
+    .involved div div {
+        padding: 20px;
+    }
 }
 
 @media screen and (max-width: 800px) {
-    .primary-nav div {
+    .primary-nav__content {
         flex-direction: column;
         grid-gap: 20px;
     }
