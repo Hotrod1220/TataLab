@@ -32,7 +32,7 @@ function Admin() {
         <div>
             {user && <div className="container">
                 <div className="logout--container">
-                    <NavLink to="resume" className="resume__button button__small button--blue">Matt's CV</NavLink>
+                    {/* <NavLink to="resume" className="resume__button button__small button--blue">Matt's CV</NavLink> */}
                     <h1>Admin</h1>
                     <button className="logout button__small button--blue" onClick={logout}>Logout</button>
                 </div>

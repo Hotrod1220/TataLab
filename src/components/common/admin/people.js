@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { ReactComponent as New } from '../../../data/icons/plus.svg'
 import useFetch from '../fetch';
 import Person from './person';
@@ -8,7 +8,8 @@ function People() {
 
     return (
         <div className="container">
-            <div>
+            <div className="pos-relative">
+                <NavLink to="resume" className="resume__button button__small button--blue">Matt's CV</NavLink>
                 <Link to="add">
                     <div className="add--button__content">
                         <New />

@@ -40,7 +40,7 @@ function App() {
               <Route path="people" element={<PeopleAd/>}/>
                 <Route path="people/add" element={<AddPerson/>}/>
                 <Route path="people/:id" element={<EditPerson/>}/>
-              <Route path="resume" element={<Resume/>}/>
+                <Route path="people/resume" element={<Resume/>}/>
               <Route path="*" element={<NotFound/>}/>
             </Route>
             <Route path="*" element={<NotFound/>}/>

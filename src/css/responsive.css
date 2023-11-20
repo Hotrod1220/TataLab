@@ -158,6 +158,10 @@
     .involved div div {
         padding: 20px;
     }
+    
+    .add--button__content svg {
+        max-width: 35px;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -306,6 +310,15 @@
         font-size: 16px;
         padding: 0.25rem 0.5rem;
     }
+
+    .resume__button {
+        font-size: 16px;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .add--button__content svg {
+        max-width: 30px;
+    }
 }
 
 
@@ -348,6 +361,10 @@
 
     .contact h3 {
         max-width: 85%;
+    }
+
+    .add--button__content h3 {
+        padding: 0px 5px;
     }
 }
 
