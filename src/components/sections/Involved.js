@@ -1,6 +1,6 @@
 import ListFaq from '../common/listFaq'
 import experiment from '../../data/images/experiment.png'
-import involved from '../../data/images/faq.jpeg'
+import involved from '../../data/images/faq.png'
 
 const faq = [
     {
