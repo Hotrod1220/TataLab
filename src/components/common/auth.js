@@ -1,5 +1,5 @@
 import { auth } from '../../config/firebase' 
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,6 +8,8 @@ function Auth() {
     const [password, setPassword] = useState('')
     const [wrong, setWrong] = useState('')
     const navigate = useNavigate()
+    const auth0 = getAuth()
+    setPersistence(auth0, browserSessionPersistence)
 
     const login = async (e) => {
         e.preventDefault()
