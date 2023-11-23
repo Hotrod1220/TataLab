@@ -21,7 +21,7 @@ import Resume from './components/common/admin/resume'
 
 function App() {
   return (
-    <Router basename="/tatalab">
+    <Router>
       <div className="App layout">
         <main>
           <Navigation/>
