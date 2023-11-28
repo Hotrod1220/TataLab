@@ -1,6 +1,6 @@
 import ListFaq from '../common/listFaq'
-import experiment from '../../data/images/experiment.png'
-import involved from '../../data/images/faq.png'
+import experiment from '../../data/images/experiment.jpg'
+import involved from '../../data/images/faq.jpg'
 
 const faq = [
     {
@@ -47,7 +47,7 @@ function Involved() {
                             like you to participate in our lab studies.
                         </p>
                         <p className="experiment__p">
-                            Visit our <a href='https://tatalab.ca/bookings/' target="_blank" rel="noreferrer">booking site</a> to see available experiments.
+                            Visit our <a href='https://booking.tatalab.ca/bookings/' target="_blank" rel="noreferrer">booking site</a> to see available experiments.
                         </p>
                     </div>
                 </div>

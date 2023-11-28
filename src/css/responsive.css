@@ -366,6 +366,10 @@
     .add--button__content h3 {
         padding: 0px 5px;
     }
+
+    .landing {
+        min-height: 500px;
+    }
 }
 
 @media screen and (max-width: 350px) {
