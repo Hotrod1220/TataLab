@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a2321674.css",
+    "main.js": "/static/js/main.fce72ef1.js",
+    "static/media/faq.jpg": "/static/media/faq.756382f02e32c1d2d516.jpg",
+    "static/media/background.png": "/static/media/background.49cab5702781acaa6ac8.png",
+    "static/media/experiment.jpg": "/static/media/experiment.37ebbe4f8a67409effa4.jpg",
+    "static/media/people.jpg": "/static/media/people.477bded2cfd76eddd9e4.jpg",
+    "static/media/icub.jpg": "/static/media/icub.2410324334fd80f523fd.jpg",
+    "static/media/matt.jpg": "/static/media/matt.168a4ad5c1ef93659296.jpg",
+    "static/media/TataLab_logo_black.png": "/static/media/TataLab_logo_black.c45bb97439c4fe1738a9.png",
+    "static/media/plus.svg": "/static/media/plus.fb802627ecf094e6fbc4dafa9b539cca.svg",
+    "static/media/x.svg": "/static/media/x.51fc1acec67ba3f787622b503ebd06b4.svg",
+    "static/media/edit.svg": "/static/media/edit.273c037c37527a447fef893ad5bec20f.svg",
+    "static/media/delete.svg": "/static/media/delete.ac9d18b9af1c865e08b02df1419a56a7.svg",
+    "static/media/chevron-down.svg": "/static/media/chevron-down.f710b7c949d2368347a89ae37b6aade0.svg",
+    "static/media/chevron-right.svg": "/static/media/chevron-right.7ae19358022e82fb527dbc1b05a3983c.svg",
+    "index.html": "/index.html",
+    "main.a2321674.css.map": "/static/css/main.a2321674.css.map",
+    "main.fce72ef1.js.map": "/static/js/main.fce72ef1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a2321674.css",
+    "static/js/main.fce72ef1.js"
+  ]
+}
